@@ -1,0 +1,11 @@
+project:
+  version: @project.version@
+  user:
+    baseurl: /
+server:
+  port: 8080
+spring:
+  data:
+    mongodb:
+      database: user-management
+      uri: mongodb://localhost:27017

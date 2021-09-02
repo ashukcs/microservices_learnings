@@ -1,0 +1,15 @@
+package com.eagleeye.licenses.service;
+
+import java.util.List;
+
+import com.eagleeye.licenses.model.License;
+
+public class LicenseServiceImpl implements LicenseService {
+
+	@Override
+	public List<License> getLicenses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="SpringBootExceptionHandlingApplicationTests" project="spring-boot-exception-handling" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.hrs.springboot.exceptionhandling.SpringBootExceptionHandlingApplicationTests" time="0.402" displayname="SpringBootExceptionHandlingApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.hrs.springboot.exceptionhandling.SpringBootExceptionHandlingApplicationTests]">
+    <testcase name="contextLoads" classname="com.hrs.springboot.exceptionhandling.SpringBootExceptionHandlingApplicationTests" time="0.402" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.hrs.springboot.exceptionhandling.SpringBootExceptionHandlingApplicationTests]/[method:contextLoads()]"/>
+  </testsuite>
+</testrun>

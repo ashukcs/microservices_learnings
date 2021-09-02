@@ -1,0 +1,5 @@
+package com.hrs.springboot.exceptionhandling.exception;
+
+public class NotFoundException {
+
+}

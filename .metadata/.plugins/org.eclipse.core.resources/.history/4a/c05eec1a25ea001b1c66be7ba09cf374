@@ -1,0 +1,44 @@
+package com.eagleeye.licenses.repository;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Repository;
+
+import com.eagleeye.licenses.model.License;
+
+@Repository
+public class LicenseRepositoryImpl implements LicenseRepository {
+
+	@Override
+	public List<License> getLicenses(String licenseId) {
+		List<License> list = new ArrayList<>();
+		list.add(
+				new License()
+				.withId(licenseId)
+				.withOrganizationId(UUID.randomUUID().toString())
+				.withProductName("Test Product Name")
+				.withLicenseType("Perseat"));
+		return list;
+	}
+
+	@Override
+	public License saveLicense(License license) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public License updateLicense(License license) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public License deleteLicense(License lisence) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

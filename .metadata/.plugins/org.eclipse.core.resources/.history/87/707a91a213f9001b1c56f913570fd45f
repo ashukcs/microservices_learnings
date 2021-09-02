@@ -1,0 +1,40 @@
+package com.hrs.gatewayserver;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+
+@SpringBootApplication
+@EnableEurekaClient
+@EnableCircuitBreaker
+public class SpringCloudGatewayServerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringCloudGatewayServerApplication.class, args);
+	}
+
+//	@Bean
+//	  public RouteLocator myRoutes(RouteLocatorBuilder builder) {
+//		System.out.println("********************************************calling through API gateway server***************************************************");
+//	    return builder.routes()
+//	      .route(p -> p
+//	        .path("/userService")
+////	        .filters(f -> f.addRequestHeader("Hello", "World"))
+//	        .uri("http://USER-SERVICE"))
+//	      .route(p -> p
+//	        .path("/subscriptionService")
+//	        .filters(f -> f
+//	          .hystrix(config -> config
+//	            .setName("subscriptionService")
+//	            .setFallbackUri("forward:/fallback")))
+//	        .uri("http://SUBSCRIPTION-SERVICE"))
+//	      .build();
+//	  }
+////
+////	  @RequestMapping("/fallback")
+////	  public Mono<String> fallback() {
+////	    return Mono.just("fallback");
+////	  }
+}

@@ -1,0 +1,37 @@
+package com.eagleeye.licenses.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.eagleeye.licenses.model.License;
+
+@Service
+public class LicenseServiceImpl implements LicenseService {
+
+	@Override
+	public List<License> getLicenses(String licenseId) {
+		List<License> list = new ArrayList<>();
+		list.add(
+				new License()
+				.withId(licenseId)
+				.withOrganizationId(UUID.randomUUID().toString())
+				.withProductName("Test Product Name")
+				.withLicenseType("Perseat"));
+		return list;
+	}
+	
+	public License saveLicense(License license) {
+		return null;
+	}
+	
+	public License updateLicense(License license) {
+		return null;
+	}
+
+	public boolean deleteLicense(String lisenceId) {
+		return true;
+	}
+}

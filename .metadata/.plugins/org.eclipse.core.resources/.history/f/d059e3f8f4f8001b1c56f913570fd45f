@@ -1,0 +1,16 @@
+server:
+  port: 8081
+  error:
+    whitelabel:
+      enabled: false # Disable Spring Boot's "Whitelabel" default error page, so we can use our own
+spring:
+  data:
+    mongodb:
+      database: subscription
+      uri: mongodb://localhost:27017
+#eureka:
+#  client:
+#    service-url: 
+#      default-zone: http://localhost:1111
+  application:
+    name: SUBSCRIPTION-SERVICE

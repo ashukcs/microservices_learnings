@@ -1,0 +1,18 @@
+#Default port is 8761
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:  http://localhost:8761
+  server:
+    wait-time-in-ms-when-sync-empty: 30
+  
+#Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.thoughtmechanix: DEBUG

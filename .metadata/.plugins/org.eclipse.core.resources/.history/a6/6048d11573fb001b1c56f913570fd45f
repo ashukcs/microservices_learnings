@@ -1,0 +1,22 @@
+package com.hrs.springboot.exceptionhandling.exception;
+
+import com.hrs.springboot.exceptionhandling.constants.StatusConstants;
+
+public class CanNotGetResponseException extends RuntimeException {
+
+    private StatusConstants.HttpConstants status;
+
+    public CanNotGetResponseException(StatusConstants.HttpConstants status) {
+        super(status.getDesc(), null);
+        this.status = status;
+    }
+
+	public StatusConstants.HttpConstants getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusConstants.HttpConstants status) {
+		this.status = status;
+	}
+    
+}

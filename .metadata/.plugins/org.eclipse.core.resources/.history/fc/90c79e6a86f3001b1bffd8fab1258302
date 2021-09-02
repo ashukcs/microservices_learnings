@@ -1,0 +1,9 @@
+package com.hrs.usersubscription.services;
+
+import com.hrs.usersubscription.payload.SubscriptionPayload;
+
+public interface SubscriptionService {
+	public SubscriptionPayload createUser(SubscriptionPayload subscriptionPayload);
+	public SubscriptionPayload getUser(String userId);
+	public Boolean deleteUser(String userId);
+}

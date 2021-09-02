@@ -1,0 +1,6 @@
+package com.hrs.userservice.service;
+
+public interface UserService {
+	public User getUser();
+	public User saveUser();
+}

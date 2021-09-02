@@ -1,0 +1,9 @@
+package com.eagleeye.licenses.service;
+
+import java.util.List;
+
+import com.eagleeye.licenses.model.License;
+
+public interface LicenseService {
+	public List<License> getLicenses();
+}

@@ -1,0 +1,15 @@
+package com.eagleeye.licenses.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.eagleeye.licenses.model.License;
+
+@Controller
+@RequestMapping(value="/v1/organizations/{organizationId}/licenses")
+public class LicenseServiceController {
+	
+	public License getLicenses() {
+		return LicenseService.getLicenses();
+	}
+}

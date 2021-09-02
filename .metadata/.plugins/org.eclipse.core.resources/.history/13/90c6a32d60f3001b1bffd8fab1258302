@@ -1,0 +1,29 @@
+package com.hrs.userservice.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hrs.userservice.payload.UserPayload;
+import com.hrs.userservice.service.UserService;
+
+@RestController
+public class UserController {
+	
+	@Autowired
+	UserService userService;
+	
+	@PostMapping(value = "/")
+	public String createUser(UserPayload user) {
+//		return userService.createUser(user);
+		return "User created!";
+	}
+	
+	@GetMapping(value = "/{userId}")
+	public String getUser(@PathVariable String userId) {
+		return "User retrieved";
+//		return userService.getUser(userId);
+	}
+}

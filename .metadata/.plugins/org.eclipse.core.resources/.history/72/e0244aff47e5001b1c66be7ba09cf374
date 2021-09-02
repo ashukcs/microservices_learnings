@@ -1,0 +1,17 @@
+package com.eagleeye.licenses.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.eagleeye.licenses.model.License;
+
+public class LicenseServiceImpl implements LicenseService {
+
+	@Override
+	public List<License> getLicenses(String licenseId) {
+		
+		return new ArrayList<License>().add(
+				new License().withId(licenseId));
+	}
+
+}

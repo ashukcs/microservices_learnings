@@ -1,0 +1,12 @@
+package com.hrs.usersubscription.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.hrs.usersubscription.entity.Subscription;
+
+public interface SubscriptionRepository extends MongoRepository<Subscription, String>{
+
+	Optional<Subscription> findByUserId(String userId);
+}

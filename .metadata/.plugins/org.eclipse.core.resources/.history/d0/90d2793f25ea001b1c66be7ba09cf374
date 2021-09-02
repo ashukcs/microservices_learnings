@@ -1,0 +1,33 @@
+package com.eagleeye.licenses.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.eagleeye.licenses.model.License;
+import com.eagleeye.licenses.repository.LicenseRepository;
+
+@Service
+public class LicenseServiceImpl implements LicenseService {
+
+	@Autowired
+	private LicenseRepository licenseRepository;
+	
+	@Override
+	public List<License> getLicenses(String licenseId) {
+		return licenseRepository.getLicenses(licenseId);
+	}
+	
+	public License saveLicense(License license) {
+		return null;
+	}
+	
+	public License updateLicense(License license) {
+		return null;
+	}
+
+	public License deleteLicense(License lisence) {
+		return null;
+	}
+}

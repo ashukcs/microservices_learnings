@@ -1,0 +1,22 @@
+package com.hrs.userservice.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.hrs.userservice.model.User;
+
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	UserRepository userRepository;
+	
+	@Override
+	public User getUser() {
+		return null;
+	}
+
+	@Override
+	public User saveUser() {
+		return null;
+	}
+	
+}

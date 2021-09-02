@@ -1,0 +1,5 @@
+package com.hrs.springboot.exceptionhandling.controller;
+
+public class RestApiController {
+
+}

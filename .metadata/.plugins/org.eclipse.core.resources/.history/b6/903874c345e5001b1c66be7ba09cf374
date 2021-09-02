@@ -1,0 +1,5 @@
+package com.eagleeye.licenses.model;
+
+public class License {
+
+}

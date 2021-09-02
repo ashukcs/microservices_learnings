@@ -1,0 +1,9 @@
+package com.hrs.userservice.services;
+
+import com.hrs.userservice.payload.UserPayload;
+
+public interface UserService {
+	public UserPayload createUser(UserPayload user);
+	public UserPayload getUser(String userId);
+	public boolean deleteUser(String userId);
+}

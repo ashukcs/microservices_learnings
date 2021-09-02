@@ -1,0 +1,14 @@
+package com.hrs.userservice.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/userservice")
+public class UserController {
+	@RequestMapping(value = "/{userId}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+	public String getUser() {
+		return "";
+	}
+}

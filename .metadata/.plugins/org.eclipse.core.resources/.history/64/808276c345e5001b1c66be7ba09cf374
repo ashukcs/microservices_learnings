@@ -1,0 +1,5 @@
+package com.eagleeye.licenses.controller;
+
+public class LicenseServiceController {
+
+}

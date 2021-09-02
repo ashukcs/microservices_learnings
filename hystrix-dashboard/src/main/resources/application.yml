@@ -1,0 +1,8 @@
+server:
+  port: 8086
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"
+#spring:
+#  application:
+#    name: MONITORING-DASHBOARD

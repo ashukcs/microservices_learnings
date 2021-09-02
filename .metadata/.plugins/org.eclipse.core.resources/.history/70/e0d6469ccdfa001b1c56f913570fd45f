@@ -1,0 +1,15 @@
+package com.hrs.userservice.facade;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.hrs.userservice.payload.SubscriptionPayload;
+
+@FeignClient(name = "SUBSCRIPTION-SERVICE", url = "http://localhost:8082/subscriptionService")
+public interface UserServiceProxy {
+	
+	@GetMapping("/getSubscription/{userId}")
+	public SubscriptionPayload getSubscriptionData(@PathVariable("userId") String userId);
+
+}

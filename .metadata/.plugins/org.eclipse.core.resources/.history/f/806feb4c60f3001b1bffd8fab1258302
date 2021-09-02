@@ -1,0 +1,10 @@
+package com.hrs.userservice.service;
+
+import org.springframework.stereotype.Service;
+
+import com.hrs.userservice.payload.UserPayload;
+
+public interface UserService {
+	public UserPayload getUser(String userId);
+	public UserPayload createUser(UserPayload user);
+}

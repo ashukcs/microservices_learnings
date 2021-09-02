@@ -1,0 +1,5 @@
+package com.hrs.userservice.exception;
+
+public class UserNotFoundException {
+
+}

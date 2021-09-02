@@ -1,0 +1,26 @@
+package com.hrs.userservice.service;
+
+import org.springframework.stereotype.Service;
+
+import com.hrs.userservice.payload.UserPayload;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+//	@Autowired
+//	UserRepository userRepository;
+	
+	@Override
+	public UserPayload getUser(String userId) {
+//		return userRepository.findById(userId);
+		return new UserPayload();
+	}
+
+	@Override
+	public UserPayload createUser(UserPayload user) {
+//		return userRepository.save(user);
+		return new UserPayload();
+		
+	}
+	
+}

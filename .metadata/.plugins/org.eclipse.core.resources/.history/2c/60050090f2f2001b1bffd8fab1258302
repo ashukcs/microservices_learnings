@@ -1,0 +1,5 @@
+package com.hrs.userservice.repository;
+
+public interface UserRepository {
+
+}

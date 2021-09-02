@@ -1,0 +1,26 @@
+project:
+  version: '@project.version@'
+  user:
+    baseurl: /
+server:
+  port: 8080
+  error:
+  whitelabel:
+    enabled: false # Disable Spring Boot's "Whitelabel" default error page, so we can use our own
+spring:
+  zipkin:
+    base-url: http://localhost:9411/
+  data:
+    mongodb:
+      database: user
+      uri: mongodb://localhost:27017
+#eureka:
+#  client:
+#    service-url: 
+#      default-zone: http://localhost:1111
+  application:
+    name: USER-SERVICE
+logging:
+  file:
+    name: microservice_log
+    path: C:/microservices_logs/microservice.log

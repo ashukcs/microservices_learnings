@@ -1,0 +1,5 @@
+package com.hrs.gatewayserver.configuration;
+
+public class GatewayConfig {
+
+}

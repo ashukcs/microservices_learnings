@@ -1,0 +1,25 @@
+package com.hrs.userservice.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.hrs.userservice.payload.UserPayload;
+import com.hrs.userservice.repository.UserRepository;
+
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	UserRepository userRepository;
+	
+	@Override
+	public Optional<UserPayload> getUser(String userId) {
+//		return userRepository.findById(userId);
+	}
+
+	@Override
+	public UserPayload createUser(UserPayload user) {
+//		return userRepository.save(user);
+	}
+	
+}

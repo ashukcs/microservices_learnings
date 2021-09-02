@@ -1,0 +1,13 @@
+package com.hrs.springboot.exceptionhandling.model;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Response<T> {
+
+    private Status status;
+
+    private T data;
+
+}

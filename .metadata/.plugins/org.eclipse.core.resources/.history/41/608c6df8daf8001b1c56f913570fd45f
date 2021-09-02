@@ -1,0 +1,5 @@
+package com.hrs.gatewayserver.controller;
+
+public class FallbackController {
+
+}

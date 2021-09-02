@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: licencing-service
+  profiles:    active:    - default
+  cloud:    config:      enabled: true
+  

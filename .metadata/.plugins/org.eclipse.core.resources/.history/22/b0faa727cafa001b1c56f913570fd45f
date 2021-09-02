@@ -1,0 +1,12 @@
+package com.hrs.userservice.facade;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+import com.hrs.userservice.payload.SubscriptionPayload;
+
+@FeignClient(name = "USER-SERVICE", url = "http://localhost:8080")
+public interface UserServiceProxy {
+	
+	public SubscriptionPayload getSubscriptionData(String userId);
+
+}

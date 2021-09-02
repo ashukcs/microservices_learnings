@@ -1,0 +1,6 @@
+package com.hrs.userservice.repository;
+
+import org.springframework.stereotype.Repository;
+
+public interface UserRepository extends MongoRepository<UserPayload, String>{
+}

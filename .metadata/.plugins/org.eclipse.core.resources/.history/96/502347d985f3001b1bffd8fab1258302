@@ -1,0 +1,62 @@
+package com.hrs.usersubscription.services;
+
+import java.util.Date;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import com.hrs.userservice.entity.User;
+import com.hrs.userservice.payload.UserPayload;
+import com.hrs.userservice.repository.UserRepository;
+import com.hrs.usersubscription.payload.SubscriptionPayload;
+
+@Service
+public class SubscriptionServiceImpl implements SubscriptionService {
+
+	@Autowired
+	protected SubscriptionRepository subscriptionRepository;
+
+	@Override
+	public SubscriptionPayload createUser(SubscriptionPayload subscriptionPayload) {
+		if(StringUtils.hasLength(subscriptionPayload.getId()) || StringUtils.hasLength(subscriptionPayload.getUserId()) || subscriptionPayload.getExpiryDate() > subscriptionPayload.getCreatedDate()) {
+			subscriptionPayload.setCreatedDate(new Date());
+			subscriptionPayload.setExpiryDate(new Date(2022,11,31));
+			subscriptionPayload =subscriptionRepository.save(subscriptionPayload.mapToSubscription()).mapTo(;
+		} else {
+			throw new IllegalArgumentException("Invalid Data!");
+		}
+		
+		return newUserPayload;
+	}
+
+	@Override
+	public UserPayload getUser(String userId) {
+		UserPayload userPayload = null;
+		if (StringUtils.hasLength(userId)) {
+			Optional<User> user = userRepository.findById(userId);
+			
+			if(user.isPresent()) {
+				User existingUser = user.get();
+				userPayload = new UserPayload(existingUser.getUserId(), existingUser.getFirstName(), existingUser.getLastName(), existingUser.getAge(), existingUser.getCreatedDate());
+			} else {
+				throw new IllegalArgumentException("User does not Exist");
+			}
+		} else {
+			throw new IllegalArgumentException("Invalid Data!");
+		}
+		return userPayload;
+	}
+
+
+	@Override
+	public Boolean deleteUser(String userId) {
+		if(StringUtils.hasLength(userId)) {
+			userRepository.deleteById(userId);
+		} else {
+			throw new IllegalArgumentException("User does not Exist");
+		}
+		return true;
+	}
+}

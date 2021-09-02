@@ -1,0 +1,76 @@
+package com.hrs.usersubscription.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
+
+import com.hrs.usersubscription.entity.Subscription;
+import com.hrs.usersubscription.payload.SubscriptionPayload;
+import com.hrs.usersubscription.repository.SubscriptionRepository;
+
+@Service
+public class SubscriptionServiceImpl implements SubscriptionService {
+	@Value("${server.port}")
+	private String port;
+	
+	@Autowired
+	protected SubscriptionRepository subscriptionRepository;
+
+	@Override
+	public SubscriptionPayload createSubscription(SubscriptionPayload subscriptionPayload) {
+		Subscription persistSubscription = null;
+		Subscription subscription = subscriptionRepository.findByUserId(subscriptionPayload.getUserId());
+		if(ObjectUtils.isEmpty(subscription)) {
+			persistSubscription = new Subscription(subscriptionPayload.getUserId(), subscriptionPayload.getStartDate(), subscriptionPayload.getExpiryDate(), subscriptionPayload.getPort());
+			subscriptionPayload = subscriptionRepository.save(persistSubscription).mapToSubscriptionPayload();
+		} else {
+			throw new IllegalArgumentException("Invalid Data!");
+		}
+		
+		return subscriptionPayload;
+	}
+
+	@Override
+	public SubscriptionPayload getSubscription(String userId) {
+		SubscriptionPayload subscriptionPayload = null;
+		if (StringUtils.hasLength(userId)) {
+			Subscription existingSubscription = subscriptionRepository.findByUserId(userId);
+			
+			if(!ObjectUtils.isEmpty(existingSubscription)) {
+				existingSubscription.setPort(port);
+				subscriptionPayload = existingSubscription.mapToSubscriptionPayload();
+			}
+		} else {
+			throw new IllegalArgumentException("Invalid Data!");
+		}
+		return subscriptionPayload;
+	}
+	
+	/*
+	 * @Override public SubscriptionPayload getSubscription(String id) {
+	 * SubscriptionPayload subscriptionPayload = null; if
+	 * (StringUtils.hasLength(id)) { Optional<Subscription> subscription =
+	 * subscriptionRepository.findById(id);
+	 * 
+	 * if(subscription.isPresent()) { Subscription existingSubscription =
+	 * subscription.get(); subscriptionPayload = new
+	 * SubscriptionPayload(existingSubscription.getId(),
+	 * existingSubscription.getUserId(), existingSubscription.getCreatedDate(),
+	 * existingSubscription.getExpiryDate()); } else { throw new
+	 * IllegalArgumentException("Subscription does not Exist"); } } else { throw new
+	 * IllegalArgumentException("Invalid Data!"); } return subscriptionPayload; }
+	 */
+
+
+	@Override
+	public Boolean deleteSubscription(String id) {
+		if(StringUtils.hasLength(id)) {
+			subscriptionRepository.deleteById(id);
+		} else {
+			throw new IllegalArgumentException("Subscription does not Exist");
+		}
+		return true;
+	}
+}

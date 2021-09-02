@@ -1,0 +1,33 @@
+server:
+  port: 8085
+spring:  application:    name: GATEWAY-SERVICE
+  cloud:    gateway:      routes:      - id: user-service
+        uri: lb://USER-SERVICE
+        predicates:                 - Path=/userService/**
+        filters:        - name: CircuitBreaker
+          args:            name: user-service
+            fallbackuri: forward://userServiceFallback
+      - id: subscription-service
+        uri: lb://SUBSCRIPTION-SERVICE
+        predicates:         
+        - Path=/subscriptionService/**
+        filters:
+        - name: CircuitBreaker
+          args:
+            name: subscription-service
+            fallbackuri: forward://subscriptionServiceFallback
+            
+management:  endpoints:    web:      exposure:        include: hystrix.stream
+
+hystrix:  command:    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000         
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url: 
+#      default-zone: http://localhost:8761/eureka/
+#  instance:#    hostname: localhost

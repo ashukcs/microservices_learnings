@@ -1,0 +1,43 @@
+package com.hrs.userservice.payload;
+
+import java.util.Date;
+
+public class SubscriptionPayload {
+	private String userId;
+	private Date startedDate;
+	private Date expiryDate;
+
+	public SubscriptionPayload(String id, String userId, Date startedDate, Date expiryDate) {
+		super();
+		this.userId = userId;
+		this.startedDate = startedDate;
+		this.expiryDate = expiryDate;
+	}
+	
+	public SubscriptionPayload() {
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public Date getStartedDate() {
+		return startedDate;
+	}
+
+	public void setStartedDate(Date startedDate) {
+		this.startedDate = startedDate;
+	}
+
+	public Date getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+}

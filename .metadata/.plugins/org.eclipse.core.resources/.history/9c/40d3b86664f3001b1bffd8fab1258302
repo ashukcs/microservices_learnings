@@ -1,0 +1,35 @@
+package com.hrs.userservice.services;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import com.hrs.userservice.payload.UserPayload;
+import com.hrs.userservice.repository.UserRepository;
+
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	protected UserRepository userRepository;
+
+	@Override
+	public Optional<UserPayload> getUser(String userId) {
+		if (StringUtils.hasLength(userId)) {
+			return userRepository.findById(userId);
+		} else {
+			throw new IllegalArgumentException("Invalid Data!");
+		}
+	}
+
+	@Override
+	public UserPayload createUser(UserPayload userPayload) {
+		if(StringUtils.hasLength(userPayload.getUserId()) || StringUtils.hasLength(userPayload.getFirstName()) || StringUtils.hasLength(userPayload.getLastName()) || (userPayload.getAge() != null && userPayload.getAge() > 18)) {
+			return userRepository.save(userPayload); 
+		} else {
+			throw new IllegalArgumentException("Invalid Data!");
+		}
+	}
+
+}

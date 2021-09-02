@@ -1,0 +1,10 @@
+package com.hrs.userservice.services;
+
+import java.util.Optional;
+
+import com.hrs.userservice.payload.UserPayload;
+
+public interface UserService {
+	public Optional<UserPayload> getUser(String userId);
+	public UserPayload createUser(UserPayload user);
+}

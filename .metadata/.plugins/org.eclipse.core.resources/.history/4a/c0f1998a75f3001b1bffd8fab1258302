@@ -1,0 +1,47 @@
+package com.hrs.userservice.services;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
+
+import com.hrs.userservice.entity.User;
+import com.hrs.userservice.payload.UserPayload;
+import com.hrs.userservice.repository.UserRepository;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	protected UserRepository userRepository;
+
+	@Override
+	public UserPayload getUser(String userId) {
+		UserPayload userPayload = null;
+		if (StringUtils.hasLength(userId)) {
+			Optional<User> user = userRepository.findById(userId);
+			
+			if(user.isPresent()) {
+				User existingUser = user.get();
+				userPayload = new UserPayload(existingUser.getUserId(), existingUser.getFirstName(), existingUser.getLastName(), existingUser.getAge(), existingUser.getCreatedDate());
+			} else {
+				throw new IllegalArgumentException("User does not Exist");
+			}
+		} else {
+			throw new IllegalArgumentException("Invalid Data!");
+		}
+		return userPayload;
+	}
+
+	@Override
+	public UserPayload createUser(UserPayload userPayload) {
+		if(StringUtils.hasLength(userPayload.getUserId()) || StringUtils.hasLength(userPayload.getFirstName()) || StringUtils.hasLength(userPayload.getLastName()) || (userPayload.getAge() != null && userPayload.getAge() > 18)) {
+			return userRepository.save(userPayload); 
+		} else {
+			throw new IllegalArgumentException("Invalid Data!");
+		}
+	}
+
+}

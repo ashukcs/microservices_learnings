@@ -1,0 +1,5 @@
+package com.hrs.userservice.service;
+
+public interface UserService {
+
+}
